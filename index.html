@@ -23,7 +23,10 @@
             for (var i = numTweets; i < streams.home.length; i++) {
               var tweet = streams.home[i];
               var $tweet = $('<div class="tweet"></div>');
+              var $timestamp = $('<i class="timestamp"></i>');
               $tweet.text('@' + tweet.user + ': ' + tweet.message);
+              $timestamp.text('Posted: ' + tweet.created_at)
+              $tweet.append('<br />', '<br />', $timestamp);
               $tweet.prependTo($body);
             }
 
