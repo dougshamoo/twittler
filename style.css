@@ -2,12 +2,23 @@ body {
 	background: #F0F8FF;
 }
 
-div.tweet {
+.tweet {
 	background: white;
-	width: 500px;
+	max-width: 500px;
 	margin: 0 auto;
 	padding: 20px;
 
-	border: 1px solid black;
-	border-radius: 3px;
+	border: 1px solid #99CCFF;
+	border-top: none;
+}
+
+.tweet:first-child {
+	border-top: 1px solid #99CCFF;
+	border-top-right-radius: 3px;
+	border-top-left-radius: 3px;
+}
+
+.tweet:last-child {
+	border-bottom-right-radius: 3px;
+	border-bottom-left-radius: 3px;
 }
