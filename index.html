@@ -10,7 +10,8 @@
       $(document).ready(function(){
         var $body = $('body');
         $body.html('');
-
+        
+        var numTweets = streams.home.length;
         var index = streams.home.length - 1;
         while(index >= 0){
           var tweet = streams.home[index];
@@ -19,6 +20,26 @@
           $tweet.appendTo($body);
           index -= 1;
         }
+
+        // function that fetches initial tweets and appends them to the body,
+        // then continues to fetch new tweets and add them to the body
+        function getTweets() {
+          if (numTweets < streams.home.length) {
+            var newTweetIndex = numTweets;
+            
+            for (var i = numTweets; i < streams.home.length; i++) {
+              var tweet = streams.home[i];
+              var $tweet = $('<div></div>');
+              $tweet.text('@' + tweet.user + ': ' + tweet.message);
+              $tweet.prependTo($body);
+            }
+
+            numTweets = streams.home.length;
+          }
+
+          setTimeout(getTweets, 2000);
+        }
+        getTweets();
 
       });
 
