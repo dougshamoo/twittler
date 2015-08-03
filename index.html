@@ -16,6 +16,7 @@
         $body.append($messageArea);
         
         var numTweets = 0;
+        var selectedUser;
 
         // function that fetches initial tweets and appends them to the body,
         // then continues to fetch new tweets and add them to the body
@@ -36,13 +37,27 @@
               $tweet.prepend($username);
               $tweet.append('<br />', '<br />', $timestamp);
               $tweet.prependTo($messageArea).hide();
-              $tweet.slideToggle();
+              
+              if (selectedUser === tweet.user || selectedUser === undefined) {
+                $tweet.slideToggle();
+              }
             }
 
             numTweets = streams.home.length;
           }
 
-          setTimeout(getTweets, 2000);
+          $('.username').on('click', function() {
+            selectedUser = $(this).text().substr(1);
+            $('.username').filter(function() {
+              return $(this).text().substr(1) !== selectedUser;
+            }).parent().hide()
+            
+          });
+
+          // for debugging purposes
+          console.log(selectedUser || "no user selected")
+
+          setTimeout(getTweets, 1000);
         })();
 
       });
