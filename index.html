@@ -52,7 +52,7 @@
             $('.username').filter(function() {
               return $(this).text().substr(1) !== selectedUser;
             }).parent().hide();
-            $('#show-all').show();
+            $('#show-all').css('display', 'block').show();
           });
 
           $('#show-all').on('click', function() {
