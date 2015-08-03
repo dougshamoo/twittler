@@ -8,12 +8,13 @@
   </head>
   <body>
     <h1 class="title">Twittler</h1>
+    <button id="show-all" hidden>Show All</button>
+    <section class="message-area"><section>
     <script>
 
       $(document).ready(function(){
         var $body = $('body');
-        var $messageArea = $('<section class="message-area"><section>');
-        $body.append($messageArea);
+        var $messageArea = $('.message-area');
         
         var numTweets = 0;
         var selectedUser;
@@ -50,9 +51,15 @@
             selectedUser = $(this).text().substr(1);
             $('.username').filter(function() {
               return $(this).text().substr(1) !== selectedUser;
-            }).parent().hide()
-            
+            }).parent().hide();
+            $('#show-all').show();
           });
+
+          $('#show-all').on('click', function() {
+            selectedUser = undefined;
+            $('.tweet').show();
+            $(this).hide();
+          })
 
           // for debugging purposes
           console.log(selectedUser || "no user selected")
