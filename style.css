@@ -3,6 +3,12 @@ body {
 	font-family: Arial, sans-serif;
 }
 
+.title {
+	text-align: center;
+	font-family: Lobster, cursive;
+	font-size: 3em;
+}
+
 .tweet {
 	background: white;
 	max-width: 500px;

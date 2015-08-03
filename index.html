@@ -3,13 +3,17 @@
   <head>
     <script src="jquery.js"></script>
     <script src="data_generator.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
+    <h1 class="title">Twittler</h1>
     <script>
 
       $(document).ready(function(){
         var $body = $('body');
+        var $messageArea = $('<section class="message-area"><section>');
+        $body.append($messageArea);
         
         var numTweets = 0;
 
@@ -26,7 +30,7 @@
               $tweet.text('@' + tweet.user + ': ' + tweet.message);
               $timestamp.text('Posted: ' + tweet.created_at)
               $tweet.append('<br />', '<br />', $timestamp);
-              $tweet.prependTo($body).hide();
+              $tweet.prependTo($messageArea).hide();
               $tweet.slideToggle();
             }
 
