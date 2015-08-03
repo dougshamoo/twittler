@@ -27,8 +27,13 @@
               var tweet = streams.home[i];
               var $tweet = $('<div class="tweet"></div>');
               var $timestamp = $('<i class="timestamp"></i>');
-              $tweet.text('@' + tweet.user + ': ' + tweet.message);
+              var $username = $('<span class="username"></span>');
+              
+              $tweet.text(': ' + tweet.message);
               $timestamp.text('Posted: ' + tweet.created_at)
+              $username.text('@' + tweet.user);
+
+              $tweet.prepend($username);
               $tweet.append('<br />', '<br />', $timestamp);
               $tweet.prependTo($messageArea).hide();
               $tweet.slideToggle();
