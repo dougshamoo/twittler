@@ -1,5 +1,6 @@
 body {
 	background: #F0F8FF;
+	font-family: Arial, sans-serif;
 }
 
 .tweet {
@@ -7,9 +8,13 @@ body {
 	max-width: 500px;
 	margin: 0 auto;
 	padding: 20px;
-
+    font-size: 1.1em;
 	border: 1px solid #99CCFF;
 	border-top: none;
+}
+
+.timestamp {
+	font-size: .9em;
 }
 
 .tweet:first-child {
