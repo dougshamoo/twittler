@@ -10,7 +10,6 @@
 
       $(document).ready(function(){
         var $body = $('body');
-        $body.html('');
         
         var numTweets = 0;
 
@@ -27,7 +26,8 @@
               $tweet.text('@' + tweet.user + ': ' + tweet.message);
               $timestamp.text('Posted: ' + tweet.created_at)
               $tweet.append('<br />', '<br />', $timestamp);
-              $tweet.prependTo($body);
+              $tweet.prependTo($body).hide();
+              $tweet.slideToggle();
             }
 
             numTweets = streams.home.length;
