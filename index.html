@@ -3,6 +3,7 @@
   <head>
     <script src="jquery.js"></script>
     <script src="data_generator.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
     <script>
@@ -11,25 +12,17 @@
         var $body = $('body');
         $body.html('');
         
-        var numTweets = streams.home.length;
-        var index = streams.home.length - 1;
-        while(index >= 0){
-          var tweet = streams.home[index];
-          var $tweet = $('<div></div>');
-          $tweet.text('@' + tweet.user + ': ' + tweet.message);
-          $tweet.appendTo($body);
-          index -= 1;
-        }
+        var numTweets = 0;
 
         // function that fetches initial tweets and appends them to the body,
         // then continues to fetch new tweets and add them to the body
-        function getTweets() {
+        (function getTweets() {
           if (numTweets < streams.home.length) {
             var newTweetIndex = numTweets;
             
             for (var i = numTweets; i < streams.home.length; i++) {
               var tweet = streams.home[i];
-              var $tweet = $('<div></div>');
+              var $tweet = $('<div class="tweet"></div>');
               $tweet.text('@' + tweet.user + ': ' + tweet.message);
               $tweet.prependTo($body);
             }
@@ -38,8 +31,7 @@
           }
 
           setTimeout(getTweets, 2000);
-        }
-        getTweets();
+        })();
 
       });
 
