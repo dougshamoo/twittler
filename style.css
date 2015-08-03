@@ -1,0 +1,13 @@
+body {
+	background: #F0F8FF;
+}
+
+div.tweet {
+	background: white;
+	width: 500px;
+	margin: 0 auto;
+	padding: 20px;
+
+	border: 1px solid black;
+	border-radius: 3px;
+}
